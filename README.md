@@ -1,142 +1,110 @@
-# 🤖 DIO Agent
+# 🛡️ GuardAI: Agente Especialista em Cibersegurança e Análise de Vulnerabilidades
 
-> Seu mentor com Inteligência Artificial para aprender mais e melhor na [DIO](https://dio.me).
+Este repositório apresenta a evolução do **DIO Agent** em um assistente focado em **AppSec (Segurança de Aplicações)**, desenvolvido como parte do desafio prático da [Digital Innovation One (DIO)](https://www.dio.me/).
 
-O **DIO Agent** é um agente de IA que acompanha você na sua jornada de estudos. Ele conhece as experiências da DIO (Bootcamps, Formações, Cursos, Desafios e muito mais) e ajuda você a estudar, praticar e planejar a sua carreira.
+> ⚠️ **AVISO DE SEGURANÇA**
+> O arquivo `app.py` contém uma vulnerabilidade de **SQL Injection intencional**, criada apenas para estudo.
+> Execute-o **somente em ambiente local**. Nunca faça deploy, nunca exponha na internet e nunca reutilize esse código em projetos reais.
+> A versão corrigida está em `app_secure.py`.
 
-Você não precisa saber programar nem instalar nada complicado. Em **3 passos**, o seu mentor está pronto para usar.
+## 🎯 Sobre a Especialização
 
----
+O agente foi especializado **exclusivamente por meio de arquivos de contexto**, regras em Markdown (*skills*) e bases de conhecimento, sem nenhum ajuste (*fine-tuning*) no modelo de IA.
 
-## ✨ Três palavras para começar
+A especialização muda a postura do agente: em vez de entregar código pronto ou respostas diretas, ele **analisa o contexto**, **avalia o risco** (impacto, probabilidade e severidade) e **orienta correções defensivas seguras**.
 
-- 🧠 **Agente de IA:** um chatbot responde perguntas. Um *agente* vai além: lê, planeja e executa passos para ajudar você a alcançar um objetivo. É a diferença entre alguém que explica o caminho e alguém que caminha junto com você.
-- 🖥️ **Harness:** é o programa onde o agente roda. O agente é o mentor, e o harness é a sala onde vocês se encontram. O mesmo mentor atende em salas diferentes, por isso o DIO Agent funciona em vários harnesses.
-- 🧩 **Skill:** é uma habilidade do agente, descrita em um guia passo a passo. Você não precisa chamar a skill: o agente percebe o que você precisa e usa a certa sozinho.
-
-Esses e outros termos estão no [Glossário](docs/glossary.md).
-
----
-
-## 🚀 Comece em 3 passos
-
-### 1️⃣ Instale um harness
-
-Recomendamos o **Google Antigravity**, que tem limites de uso generosos para quem está começando. Mas qualquer harness da lista funciona: escolha um e siga a instalação da documentação oficial dele.
-
-| Harness | Documentação oficial |
-|---------|----------------------|
-| Google Antigravity (recomendado) | https://antigravity.google/docs |
-| Claude Code | https://code.claude.com/docs |
-| Codex | https://developers.openai.com/codex |
-| OpenCode | https://opencode.ai/docs |
-| Hermes | https://hermes-agent.nousresearch.com/docs |
-
-### 2️⃣ Baixe o DIO Agent e abra no harness
-
-Baixe este repositório do jeito mais simples para você:
-
-- **Com Git:** no terminal, rode `git clone https://github.com/digitalinnovationone/dio-agent.git`
-- **Sem Git:** no topo desta página, clique no botão verde **Code**, depois em **Download ZIP**, e extraia a pasta.
-
-Depois, abra no harness a pasta do projeto, a que tem o arquivo `AGENTS.md` (pelo Git, ela se chama `dio-agent`; pelo .zip, `dio-agent-main`). O harness lê esse arquivo sozinho, e o agente já sabe quem é: o seu mentor de estudos da DIO.
-
-### 3️⃣ Converse
-
-Fale naturalmente, com as suas palavras. Nas primeiras vezes, vale usar um dos [modelos de prompt](#-modelos-de-prompt) abaixo: quanto mais contexto você dá, melhor o agente ajuda.
-
----
-
-## 🧩 As skills do agente
-
-| Skill | Para que serve | Experimente pedir |
-|-------|----------------|-------------------|
-| [Plano de estudos](skills/study-plan/SKILL.md) | Organiza o que estudar, em que ordem e em quanto tempo | "Quero concluir este Bootcamp em 2 meses, me ajuda?" |
-| [Destravar desafio](skills/unblock-challenge/SKILL.md) | Conduz você até a solução de um desafio, sem dar a resposta pronta | "Travei nesse desafio, me ajuda?" |
-| [Explicar conceito](skills/explain-concept/SKILL.md) | Explica conceitos de forma simples, com analogias e exemplos | "Não entendi o que é uma API." |
-| [Pesquisa na web](skills/web-search/SKILL.md) | Responde dúvidas atuais (versões, lançamentos, mercado) com fontes citadas | "Qual a versão estável do Node hoje?" |
-| [Revisão de portfólio](skills/portfolio-review/SKILL.md) | Dá feedback sobre o seu portfólio e GitHub antes de buscar vagas | "O que falta no meu GitHub para uma vaga júnior?" |
-| [Caminho AI Builder](skills/ai-builder-path/SKILL.md) | Ajuda você a escolher o próximo passo na Carreira AI Builder | "Qual Formação AI Builder combina comigo?" |
-
-A pesquisa na web usa a busca do seu harness. Se ele não tiver busca própria, veja [como conectar o You.com](docs/youcom-mcp.md), que tem uma opção gratuita.
-
----
-
-## 📝 Modelos de prompt
-
-Copie, preencha o que está entre colchetes e envie. Não precisa de formato perfeito: o agente pede mais detalhes se precisar.
-
-**🗺️ Plano de estudos**
+## 📂 Estrutura do Projeto
 
 ```
-Quero montar um plano de estudos.
-- Meu objetivo: [ex: ser dev back-end, concluir um Bootcamp]
-- O que quero fazer na DIO: [link ou nome do Bootcamp, Formação, Aceleração ou Carreira]
-- O que já tenho: [um plano de ação ou de estudos, se tiver]
-- Meu nível hoje: [iniciante, intermediário, avançado]
-- Tempo disponível: [ex: 1 hora por dia, de segunda a sexta]
-```
-
-**🔓 Destravar desafio**
-
-```
-Estou travado em um Desafio de [Código, Projeto ou Criativo] da DIO.
-- O que o desafio pede: [cole o enunciado ou, no Desafio de Projeto, o link do repositório do desafio]
-- Onde eu travei: [explique o ponto da dificuldade]
-- Meu código ou repositório: [cole o código ou o link, se tiver]
-Me ajuda a destravar sem dar a resposta pronta.
-```
-
-**💡 Explicar conceito**
-
-```
-Me explica o conceito de [ex: API, laço de repetição, herança].
-- Meu nível: [nunca vi, já ouvi falar, quero aprofundar]
-```
-
-**🧭 Caminho AI Builder**
-
-```
-Quero escolher meu próximo passo na Carreira AI Builder.
-- O que quero construir com IA: [ex: um produto para o meu negócio, um software, agentes que automatizam processos, ainda não sei]
-- Minha experiência com programação: [nenhuma, o básico, trabalho com desenvolvimento]
-- Meu objetivo: [ex: mudar de carreira, tirar uma ideia do papel]
-```
-
----
-
-## 🔄 Mantenha o DIO Agent atualizado
-
-O DIO Agent evolui com o tempo. Se você usou Git, rode `git pull` no terminal, dentro da pasta (ou peça para o próprio agente rodar). Se baixou o .zip, baixe de novo.
-
----
-
-## 🗂️ Estrutura do repositório
-
-```
-dio-agent/
-├── README.md                Este guia
-├── AGENTS.md                Definição do agente (lida pelo harness)
-├── CLAUDE.md                Atalho para o Claude Code
+.
+├── AGENTS.md                                  # Registro das skills do agente
+├── README.md
+├── app.py                                     # Laboratório VULNERÁVEL (SQL Injection intencional)
+├── app_secure.py                              # Versão CORRIGIDA (consultas parametrizadas)
+├── requirements.txt
 ├── agent/
-│   ├── persona.md           A personalidade e o tom do agente
-│   └── knowledge/           O que o agente sabe sobre a DIO
-├── skills/                  Uma pasta por skill, cada uma com o seu SKILL.md
-└── docs/
-    ├── glossary.md          Glossário de termos
-    └── youcom-mcp.md        Como conectar a busca do You.com
+│   └── knowledge/
+│       └── security-basics.md                 # Base de conhecimento teórico
+└── skills/
+    └── vulnerability-analysis/
+        └── SKILL.md                           # Roteiro de análise de vulnerabilidades
 ```
 
----
+| Arquivo | Função |
+|---|---|
+| `skills/vulnerability-analysis/SKILL.md` | Regras de execução que o agente segue para analisar falhas e propor mitigações. |
+| `agent/knowledge/security-basics.md` | Definições de vulnerabilidade, ameaça e risco, Tríade CIA e boas práticas de desenvolvimento seguro. |
+| `AGENTS.md` | Registro e descrição da skill de análise de vulnerabilidades. |
+| `app.py` | Aplicação Flask local com falha intencional de SQL Injection para testes de laboratório. |
+| `app_secure.py` | Mesma aplicação, corrigida, para comparação lado a lado. |
 
-## 🤝 Contribua
+## 🚀 Como Executar o Laboratório
 
-Tem uma ideia de skill? Veja [como criar uma skill](skills/README.md) e abra um pull request.
+**1. Instale as dependências** (Python 3.9+):
 
----
+```bash
+python -m pip install -r requirements.txt
+```
 
-## 💬 Sobre este projeto
+**2. Rode a versão vulnerável:**
 
-O DIO Agent foi criado para acompanhar você nos Bootcamps e Formações da DIO. A ideia é simples: aprender na era da IA fica mais fácil quando você tem um mentor disponível a qualquer hora.
+```bash
+python app.py
+```
 
-Bons estudos, e vem com a gente. 🚀
+**3. Acesse** `http://127.0.0.1:5000` e teste o formulário de login.
+
+O servidor escuta apenas em `127.0.0.1` (localhost), então não fica acessível por outras máquinas da rede.
+
+## 🔬 Roteiro de Estudo
+
+1. **Observe o comportamento normal:** entre com `admin` / `admin123`.
+2. **Teste entradas inesperadas:** informe no campo de usuário um apóstrofo (`'`) e veja o erro retornado pela aplicação.
+3. **Peça uma análise ao GuardAI:** envie o trecho da rota `/login` do `app.py` e peça para analisar a segurança.
+4. **Compare com a correção:** rode `python app_secure.py` e repita os testes.
+
+### Por que a falha existe?
+
+No `app.py`, a consulta SQL é montada por **concatenação de strings** com dados vindos do usuário. A entrada deixa de ser tratada como dado e passa a alterar a estrutura da consulta.
+
+### Como corrigir?
+
+Em `app_secure.py`, a consulta usa **parâmetros** (`?`), e a senha é verificada com **hash**:
+
+```python
+# ❌ Vulnerável
+query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
+
+# ✅ Seguro
+cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
+```
+
+## 💬 Exemplo de Interação com o Agente
+
+**Usuário:** Analise esta rota de login e me diga se ela é segura.
+
+**GuardAI (resumo da resposta):**
+
+- **Achado:** SQL Injection por concatenação de strings (CWE-89).
+- **Impacto:** Alto, com possível bypass de autenticação e vazamento de dados.
+- **Probabilidade:** Alta, pois a rota é pública e não há validação.
+- **Severidade:** **Crítica**.
+- **Mitigação:** consultas parametrizadas, hash de senha, mensagens de erro genéricas e princípio do menor privilégio no banco.
+- **Verificação:** testes com entradas inválidas e revisão de código após a correção.
+
+## 🧠 Como a Skill Funciona
+
+A skill `vulnerability-analysis` conduz o agente por etapas: **entender o contexto → identificar a falha → classificar o risco → propor mitigação defensiva → indicar como validar**. Veja os detalhes em [`skills/vulnerability-analysis/SKILL.md`](skills/vulnerability-analysis/SKILL.md).
+
+## 📚 Referências
+
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+- [OWASP SQL Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)
+- [CWE-89: SQL Injection](https://cwe.mitre.org/data/definitions/89.html)
+
+## ⚖️ Uso Educacional
+
+Projeto criado para fins **exclusivamente educacionais**. Teste apenas sistemas que você possui ou tem autorização explícita para avaliar.
+## 🔍 Evidências e Testes
+
+![Evidência da análise do agente](./assets/evidencia.png)
